@@ -45,7 +45,7 @@ const translations = {
     },
   },
   vi: {
-    titleSuffix: "Công cụ đếm tiền",
+    titleSuffix: "Công Cụ Đếm Tiền",
     totalLabel: "Tổng tiền",
     notesCount: (count: number) => withCount(count, "tờ"),
     denominationsCount: (count: number) => `${count.toLocaleString("vi-VN")} loại mệnh giá`,

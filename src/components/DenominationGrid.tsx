@@ -37,17 +37,25 @@ export const DenominationGrid = ({
             }`}
             aria-label={copy.gridSelectAria(formattedDenom, count)}
           >
-            <span className="text-sm text-neutral-900 dark:text-neutral-50">{formattedDenom}</span>
+            <span className="w-full rounded-full bg-primary px-3 py-1 text-sm font-semibold text-white">
+              {formattedDenom}
+            </span>
             <span
-              className={`mt-1 w-full rounded-full px-2 py-0.5 text-sm ${
+              className={`mt-2 text-sm font-medium ${
                 count > 0
-                  ? "bg-primary/10 text-primary-dark dark:bg-primary/20 dark:text-primary-light"
-                  : "bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500"
+                  ? "text-primary-dark dark:text-primary-light"
+                  : "text-neutral-400 dark:text-neutral-600"
               }`}
             >
               {copy.gridCountBadge(count)}
             </span>
-            <span className="mt-1 text-sm font-medium text-primary-dark dark:text-primary-light">
+            <span
+              className={`mt-1 text-sm font-semibold ${
+                count > 0
+                  ? "text-primary-dark dark:text-primary-light"
+                  : "text-neutral-400 dark:text-neutral-600"
+              }`}
+            >
               {formatCurrency(subtotal)}
             </span>
           </button>
