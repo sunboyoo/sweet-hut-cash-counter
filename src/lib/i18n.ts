@@ -4,6 +4,7 @@ const withCount = (count: number, unit: string) => `${count.toLocaleString("vi-V
 
 const translations = {
   zh: {
+    titleSuffix: "点钞工具",
     totalLabel: "总金额",
     notesCount: (count: number) => `${count.toLocaleString("zh-CN")} 张`,
     denominationsCount: (count: number) => `${count.toLocaleString("zh-CN")} 种面额`,
@@ -44,6 +45,7 @@ const translations = {
     },
   },
   vi: {
+    titleSuffix: "Công cụ đếm tiền",
     totalLabel: "Tổng tiền",
     notesCount: (count: number) => withCount(count, "tờ"),
     denominationsCount: (count: number) => `${count.toLocaleString("vi-VN")} loại mệnh giá`,
@@ -84,6 +86,7 @@ const translations = {
     },
   },
 } satisfies Record<Language, {
+  titleSuffix: string;
   totalLabel: string;
   notesCount: (count: number) => string;
   denominationsCount: (count: number) => string;

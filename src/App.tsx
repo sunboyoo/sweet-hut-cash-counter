@@ -143,7 +143,7 @@ export default function App() {
       <div className="mx-auto flex min-h-screen w-full max-w-[420px] flex-col px-4 pb-24">
         <header className="pt-[calc(1.2rem+env(safe-area-inset-top))] text-center">
           <h1 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-50">
-            SWEET HUT 点钞工具
+            {`SWEET HUT ${copy.titleSuffix}`}
           </h1>
           <div className="mt-4 rounded-3xl bg-white/90 p-6 shadow-card backdrop-blur-sm dark:bg-neutral-900/90">
             <div className="text-sm text-neutral-500 dark:text-neutral-400">{copy.totalLabel}</div>
