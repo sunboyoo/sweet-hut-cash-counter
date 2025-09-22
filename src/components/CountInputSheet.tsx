@@ -55,7 +55,14 @@ export const CountInputSheet = ({
     }
   }, [showStepper]);
 
-  useEffect(() => () => repeatTimer.current && clearInterval(repeatTimer.current), []);
+  useEffect(() => {
+    return () => {
+      if (repeatTimer.current) {
+        clearInterval(repeatTimer.current);
+        repeatTimer.current = null;
+      }
+    };
+  }, []);
 
   const subtotal = useMemo(() => count * denom, [count, denom]);
 
