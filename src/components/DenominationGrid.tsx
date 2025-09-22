@@ -32,7 +32,7 @@ export const DenominationGrid = ({
             key={denom}
             type="button"
             onClick={() => onSelect(denom)}
-            className={`flex h-28 flex-col items-center justify-center rounded-3xl border border-primary/10 bg-white/95 p-3 text-center shadow-sm transition-all active:bg-primary/10 dark:bg-neutral-900/90 dark:border-neutral-700 ${
+            className={`flex h-28 flex-col items-center justify-center rounded-3xl border border-primary/10 bg-white/95 p-3 text-center shadow-lg transition-all active:bg-primary/10 dark:bg-neutral-900/90 dark:border-neutral-700 ${
               isRecent ? "animate-pulse-scale shadow-card" : ""
             }`}
             aria-label={copy.gridSelectAria(formattedDenom, count)}
