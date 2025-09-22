@@ -32,34 +32,24 @@ export const DenominationGrid = ({
             key={denom}
             type="button"
             onClick={() => onSelect(denom)}
-            className={`flex h-28 flex-col justify-between rounded-3xl border border-primary/10 bg-white/95 p-3 text-left shadow-sm transition-all active:bg-primary/10 dark:bg-neutral-900/90 dark:border-neutral-700 ${
+            className={`flex h-28 flex-col items-center justify-center rounded-3xl border border-primary/10 bg-white/95 p-3 text-center shadow-sm transition-all active:bg-primary/10 dark:bg-neutral-900/90 dark:border-neutral-700 ${
               isRecent ? "animate-pulse-scale shadow-card" : ""
             }`}
             aria-label={copy.gridSelectAria(formattedDenom, count)}
           >
-            <span className="text-lg font-normal tracking-tight text-neutral-900 dark:text-neutral-50">
-              {formattedDenom}
+            <span className="text-sm text-neutral-900 dark:text-neutral-50">{formattedDenom}</span>
+            <span
+              className={`mt-1 w-full rounded-full px-2 py-0.5 text-sm ${
+                count > 0
+                  ? "bg-primary/10 text-primary-dark dark:bg-primary/20 dark:text-primary-light"
+                  : "bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500"
+              }`}
+            >
+              {copy.gridCountBadge(count)}
             </span>
-            <div className="flex flex-col gap-1 text-sm">
-              <span
-                className={`rounded-full px-2 py-0.5 text-center ${
-                  count > 0
-                    ? "bg-primary/10 text-primary-dark dark:bg-primary/20 dark:text-primary-light"
-                    : "bg-neutral-100 text-neutral-400 dark:bg-neutral-800 dark:text-neutral-500"
-                }`}
-              >
-                {copy.gridCountBadge(count)}
-              </span>
-              <span
-                className={`text-xs ${
-                  count > 0
-                    ? "text-neutral-600 dark:text-neutral-300"
-                    : "text-neutral-400 dark:text-neutral-600"
-                }`}
-              >
-                {formatCurrency(subtotal)}
-              </span>
-            </div>
+            <span className="mt-1 text-sm font-medium text-primary-dark dark:text-primary-light">
+              {formatCurrency(subtotal)}
+            </span>
           </button>
         );
       })}
