@@ -169,10 +169,6 @@ export default function App() {
           language={language}
         />
 
-        <section className="flex-1 overflow-y-auto pb-6">
-          <EnteredList entries={entries} onEdit={setActiveDenom} language={language} />
-        </section>
-
         <ResetBar
           onReset={handleResetRequest}
           isDisabled={entries.length === 0}
