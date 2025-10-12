@@ -139,7 +139,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-surface via-white to-surface dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-950">
+    <div className="min-h-screen bg-white dark:bg-neutral-950">
       <div className="mx-auto flex min-h-screen w-full max-w-[420px] flex-col px-4 pb-16">
         <header className="pt-[calc(1.2rem+env(safe-area-inset-top))] text-center">
           <h1 className="text-2xl font-semibold tracking-tight text-primary-dark dark:text-primary-light">

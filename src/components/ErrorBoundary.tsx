@@ -27,7 +27,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-surface via-white to-surface p-4 dark:from-neutral-950 dark:via-neutral-950 dark:to-neutral-950">
+        <div className="flex min-h-screen items-center justify-center bg-white p-4 dark:bg-neutral-950">
           <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-card dark:bg-neutral-900">
             <h1 className="mb-4 text-2xl font-bold text-accent-dark">Đã xảy ra lỗi / 发生错误</h1>
             <p className="mb-4 text-neutral-600 dark:text-neutral-300">
