@@ -145,16 +145,16 @@ export default function App() {
           <h1 className="text-2xl font-semibold tracking-tight text-primary-dark dark:text-primary-light">
             {`SWEET HUT ${copy.titleSuffix}`}
           </h1>
-          <div className="mt-4 rounded-3xl bg-white/90 p-6 shadow-card backdrop-blur-sm dark:bg-neutral-900/90">
-            <div className="text-sm text-neutral-500 dark:text-neutral-400">{copy.totalLabel}</div>
-            <div className="mt-2 text-3xl font-bold text-primary-dark dark:text-primary-light">
+          <div className="mt-4 rounded-3xl bg-primary-dark p-6 shadow-card dark:bg-primary-dark">
+            <div className="text-sm text-white/70">{copy.totalLabel}</div>
+            <div className="mt-2 text-3xl font-bold text-white">
               {formatCurrency(displayTotal)}
             </div>
-            <div className="mt-2 flex items-center justify-center gap-4 text-xs text-neutral-500 dark:text-neutral-400">
-              <span className="flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 font-medium text-primary-dark dark:bg-primary/20 dark:text-primary-light">
+            <div className="mt-2 flex items-center justify-center gap-4 text-xs">
+              <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 font-medium text-white">
                 {copy.notesCount(totalNotes)}
               </span>
-              <span className="flex items-center gap-1 rounded-full bg-neutral-100 px-3 py-1 font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-200">
+              <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 font-medium text-white">
                 {copy.denominationsCount(entries.length)}
               </span>
             </div>
