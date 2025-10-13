@@ -16,16 +16,15 @@ export const LinkCards = ({ language }: Props) => {
           href={card.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="touch-target block rounded-3xl p-4 text-white shadow-lg transition-transform active:scale-95"
-          style={{ backgroundColor: card.color }}
+          className="touch-target block rounded-2xl border border-neutral-200 bg-white p-3.5 shadow-sm transition-all active:scale-98 active:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-900 dark:active:bg-neutral-800"
         >
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-base font-semibold">{card.title}</h3>
-              <p className="mt-1 text-sm opacity-90">{card.description}</p>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex-1">
+              <h3 className="text-sm font-medium text-neutral-700 dark:text-neutral-300">{card.title}</h3>
+              <p className="mt-0.5 text-xs text-neutral-500 dark:text-neutral-400">{card.description}</p>
             </div>
             <svg
-              className="h-6 w-6 opacity-75"
+              className="h-5 w-5 flex-shrink-0 text-neutral-400 dark:text-neutral-500"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

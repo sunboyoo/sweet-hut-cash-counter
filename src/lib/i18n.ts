@@ -49,15 +49,13 @@ const translations = {
           id: 1,
           title: 'SWEET HUT 导航',
           description: 'SWEET HUT 导航',
-          url: 'https://sweet-hut-nav.vercel.app/',
-          color: '#2f5233'
+          url: 'https://sweet-hut-nav.vercel.app/'
         },
         {
           id: 2,
           title: '工作时间和工资',
           description: '根据每天的工作时间，计算总工作时长和工资',
-          url: 'https://sweet-hut-salary.vercel.app/',
-          color: '#4a7c59'
+          url: 'https://sweet-hut-salary.vercel.app/'
         }
       ]
     },
@@ -108,15 +106,13 @@ const translations = {
           id: 1,
           title: 'SWEET HUT Trang chủ',
           description: 'SWEET HUT Trang chủ',
-          url: 'https://sweet-hut-nav.vercel.app/',
-          color: '#2f5233'
+          url: 'https://sweet-hut-nav.vercel.app/'
         },
         {
           id: 2,
           title: 'Thời Gian Làm Việc và Lương',
           description: 'Tính lương và giờ làm việc theo ngày',
-          url: 'https://sweet-hut-salary.vercel.app/',
-          color: '#4a7c59'
+          url: 'https://sweet-hut-salary.vercel.app/'
         }
       ]
     },
@@ -167,7 +163,6 @@ const translations = {
       title: string;
       description: string;
       url: string;
-      color: string;
     }>;
   };
 }>;
