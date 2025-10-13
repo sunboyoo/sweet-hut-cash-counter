@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CountInputSheet } from "./components/CountInputSheet";
 import { DenominationGrid } from "./components/DenominationGrid";
+import { LinkCards } from "./components/LinkCards";
 import { ResetBar } from "./components/ResetBar";
 import { ResetConfirmSheet } from "./components/ResetConfirmSheet";
 import { useAnimatedNumber } from "./hooks/useAnimatedNumber";
@@ -168,7 +169,7 @@ export default function App() {
           language={language}
         />
 
-        <div className="mt-8 flex flex-col gap-4 pb-6">
+        <div className="mt-8 flex flex-col gap-4">
           <ResetBar
             onReset={handleResetRequest}
             isDisabled={entries.length === 0}
@@ -176,6 +177,8 @@ export default function App() {
             onLanguageChange={setLanguage}
           />
         </div>
+
+        <LinkCards language={language} />
 
         {activeDenom && (
           <CountInputSheet

@@ -43,6 +43,24 @@ const translations = {
       vi: "Tiếng Việt",
       zh: "简体中文",
     },
+    links: {
+      cards: [
+        {
+          id: 1,
+          title: 'SWEET HUT 导航',
+          description: 'SWEET HUT 导航',
+          url: 'https://sweet-hut-nav.vercel.app/',
+          color: '#2f5233'
+        },
+        {
+          id: 2,
+          title: '工作时间和工资',
+          description: '根据每天的工作时间，计算总工作时长和工资',
+          url: 'https://sweet-hut-salary.vercel.app/',
+          color: '#4a7c59'
+        }
+      ]
+    },
   },
   vi: {
     titleSuffix: "Công Cụ Đếm Tiền",
@@ -84,6 +102,24 @@ const translations = {
       vi: "Tiếng Việt",
       zh: "简体中文",
     },
+    links: {
+      cards: [
+        {
+          id: 1,
+          title: 'SWEET HUT Trang chủ',
+          description: 'SWEET HUT Trang chủ',
+          url: 'https://sweet-hut-nav.vercel.app/',
+          color: '#2f5233'
+        },
+        {
+          id: 2,
+          title: 'Thời Gian Làm Việc và Lương',
+          description: 'Tính lương và giờ làm việc theo ngày',
+          url: 'https://sweet-hut-salary.vercel.app/',
+          color: '#4a7c59'
+        }
+      ]
+    },
   },
 } satisfies Record<Language, {
   titleSuffix: string;
@@ -124,6 +160,15 @@ const translations = {
     label: string;
     vi: string;
     zh: string;
+  };
+  links: {
+    cards: Array<{
+      id: number;
+      title: string;
+      description: string;
+      url: string;
+      color: string;
+    }>;
   };
 }>;
 
