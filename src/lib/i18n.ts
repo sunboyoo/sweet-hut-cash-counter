@@ -88,13 +88,13 @@ const translations = {
 } satisfies Record<Language, {
   titleSuffix: string;
   totalLabel: string;
-  notesCount: (count: number) => string;
-  denominationsCount: (count: number) => string;
+  notesCount: (_count: number) => string;
+  denominationsCount: (_count: number) => string;
   emptyListHint: string;
-  gridSelectAria: (value: string, count: number) => string;
-  gridCountBadge: (count: number) => string;
-  listEditAria: (value: string, count: number) => string;
-  listCountLabel: (count: number) => string;
+  gridSelectAria: (_value: string, _count: number) => string;
+  gridCountBadge: (_count: number) => string;
+  listEditAria: (_value: string, _count: number) => string;
+  listCountLabel: (_count: number) => string;
   listSubtotalLabel: string;
   sheet: {
     denominationLabel: string;
@@ -103,14 +103,14 @@ const translations = {
     countLabel: string;
     decrementAria: string;
     incrementAria: string;
-    inputLabel: (max: string) => string;
+    inputLabel: (_max: string) => string;
     directInputAria: string;
     subtotalLabel: string;
     confirm: string;
     cancel: string;
     delete: string;
     invalidCount: string;
-    maxCount: (max: string) => string;
+    maxCount: (_max: string) => string;
   };
   reset: {
     button: string;

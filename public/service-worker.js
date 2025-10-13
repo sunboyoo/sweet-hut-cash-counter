@@ -1,4 +1,4 @@
-const CACHE_NAME = "cash-counter-v2";
+const CACHE_NAME = "sweet-hut-cash-counter-v2";
 const APP_SHELL = ["/", "/index.html", "/manifest.webmanifest", "/icons/icon-192.png", "/icons/icon-512.png"];
 
 self.addEventListener("install", (event) => {

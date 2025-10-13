@@ -5,7 +5,7 @@ import type { CashState, Denomination } from "../lib/types";
 type Props = {
   denominations: readonly Denomination[];
   counts: CashState;
-  onSelect: (denom: Denomination) => void;
+  onSelect: (_denom: Denomination) => void;
   recentDenom?: Denomination | null;
   language: Language;
 };

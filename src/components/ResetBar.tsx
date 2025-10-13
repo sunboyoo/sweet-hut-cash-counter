@@ -4,7 +4,7 @@ interface Props {
   onReset: () => void;
   isDisabled: boolean;
   language: Language;
-  onLanguageChange: (language: Language) => void;
+  onLanguageChange: (_language: Language) => void;
 }
 
 export const ResetBar = ({ onReset, isDisabled, language, onLanguageChange }: Props) => {

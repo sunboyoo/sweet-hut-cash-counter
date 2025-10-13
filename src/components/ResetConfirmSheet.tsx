@@ -3,7 +3,7 @@ import { getCopy, type Language } from "../lib/i18n";
 
 interface Props {
   onCancel: () => void;
-  onConfirm: (options: { skipNext: boolean }) => void;
+  onConfirm: (_options: { skipNext: boolean }) => void;
   language: Language;
 }
 

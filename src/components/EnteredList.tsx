@@ -4,7 +4,7 @@ import type { BillEntry } from "../lib/types";
 
 type Props = {
   entries: BillEntry[];
-  onEdit: (denom: BillEntry["denom"]) => void;
+  onEdit: (_denom: BillEntry["denom"]) => void;
   language: Language;
 };
 

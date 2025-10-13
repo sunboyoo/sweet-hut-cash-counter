@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CountInputSheet } from "./components/CountInputSheet";
 import { DenominationGrid } from "./components/DenominationGrid";
-import { EnteredList } from "./components/EnteredList";
 import { ResetBar } from "./components/ResetBar";
 import { ResetConfirmSheet } from "./components/ResetConfirmSheet";
 import { useAnimatedNumber } from "./hooks/useAnimatedNumber";
@@ -21,9 +20,9 @@ const DENOMINATIONS: Denomination[] = [
   1000,
 ];
 
-const STORAGE_KEY = "cash-counter-state";
-const RESET_SKIP_KEY = "cash-counter-reset-skip";
-const LANGUAGE_KEY = "cash-counter-language";
+const STORAGE_KEY = "sweet-hut-cash-counter-state";
+const RESET_SKIP_KEY = "sweet-hut-cash-counter-reset-skip";
+const LANGUAGE_KEY = "sweet-hut-cash-counter-language";
 
 const loadCashState = (): CashState => {
   if (typeof window === "undefined") return {};

@@ -9,7 +9,7 @@ type Props = {
   denom: Denomination;
   initialCount: number;
   onClose: () => void;
-  onSave: (count: number) => void;
+  onSave: (_count: number) => void;
   onRemove: () => void;
   language: Language;
 };

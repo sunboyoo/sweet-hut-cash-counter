@@ -40,7 +40,7 @@ export const useAnimatedNumber = (value: number, duration = 260) => {
 
   useEffect(() => {
     previousValue.current = value;
-  }, []);
+  }, [value]);
 
   return displayValue;
 };

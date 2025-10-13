@@ -1,6 +1,6 @@
-# VND Cash Counter
+# Sweet Hut Cash Counter
 
-专为 iPhone 15 Pro 做触控优化的越南盾点钞 Web App。支持九种固定面额录入、实时合计、可选本地恢复和基础离线能力，可直接添加到主屏幕当作 PWA 使用。
+SWEET HUT 专用越南盾点钞 Web App，为 iPhone 15 Pro 触控优化。支持九种固定面额录入、实时合计、可选本地恢复和基础离线能力，可直接添加到主屏幕当作 PWA 使用。
 
 ## 快速开始
 

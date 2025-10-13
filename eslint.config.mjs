@@ -32,6 +32,7 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       "no-undef": "off",
+      "no-unused-vars": "off",
       "@typescript-eslint/consistent-type-imports": "warn",
       "@typescript-eslint/no-unused-vars": [
         "warn",

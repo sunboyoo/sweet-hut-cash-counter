@@ -1,7 +1,7 @@
 {
-  "name": "VND Cash Counter",
-  "short_name": "VND Counter",
-  "description": "越南盾现金点钞助手，为 iPhone 15 Pro 优化",
+  "name": "Sweet Hut Cash Counter",
+  "short_name": "Sweet Hut",
+  "description": "SWEET HUT 越南盾现金点钞助手，为 iPhone 15 Pro 优化",
   "display": "standalone",
   "start_url": ".",
   "scope": "/",
