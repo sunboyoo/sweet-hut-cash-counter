@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { formatCurrency } from "../lib/currency";
-import { getCopy, type Language } from "../lib/i18n";
+import { getCopy, type Language } from "../i18n/translations";
 import type { Denomination } from "../lib/types";
 
 const MAX_COUNT = 9999;
@@ -30,7 +30,7 @@ export const CountInputSheet = ({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const repeatTimer = useRef<ReturnType<typeof setInterval> | null>(null);
   const copy = getCopy(language);
-  const locale = language === "vi" ? "vi-VN" : "zh-CN";
+  const locale = language === "vi" ? "vi-VN" : language === "en" ? "en-US" : "zh-CN";
   const maxDisplay = MAX_COUNT.toLocaleString(locale);
   const formattedDenom = formatCurrency(denom);
 

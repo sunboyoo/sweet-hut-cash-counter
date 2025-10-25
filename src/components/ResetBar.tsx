@@ -1,57 +1,38 @@
-import { getCopy, type Language } from "../lib/i18n";
+import { getCopy } from "../i18n/translations";
+import { useLanguage } from "./contexts/LanguagecContext";
 
 interface Props {
   onReset: () => void;
   isDisabled: boolean;
-  language: Language;
-  onLanguageChange: (_language: Language) => void;
 }
 
-export const ResetBar = ({ onReset, isDisabled, language, onLanguageChange }: Props) => {
+export const ResetBar = ({ onReset, isDisabled }: Props) => {
+  const { language } = useLanguage();
   const copy = getCopy(language);
 
   return (
-    <div className="flex flex-col gap-4">
+    <footer className="pt-6 pb-2">
       <button
         type="button"
-        className="touch-target w-full rounded-3xl border border-red-400 bg-red-50 px-4 py-3 text-base font-semibold text-red-500 transition active:bg-red-100 disabled:opacity-60 dark:border-red-500/60 dark:bg-red-950/40 dark:text-red-400"
+        className="touch-target flex w-full items-center justify-center space-x-2 rounded-full bg-red-500 py-3 px-4 text-base font-semibold text-white shadow-md transition-colors hover:bg-red-600 active:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-400 dark:bg-red-600 dark:hover:bg-red-700 dark:active:bg-red-800"
         onClick={onReset}
         disabled={isDisabled}
       >
-        {copy.reset.button}
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V5a2 2 0 00-2-2h-2a2 2 0 00-2 2v2m-4 0h12"
+          />
+        </svg>
+        <span>{copy.reset.button}</span>
       </button>
-      <div className="flex gap-2">
-        <LanguageButton
-          label={copy.language.vi}
-          isActive={language === "vi"}
-          onClick={() => onLanguageChange("vi")}
-        />
-        <LanguageButton
-          label={copy.language.zh}
-          isActive={language === "zh"}
-          onClick={() => onLanguageChange("zh")}
-        />
-      </div>
-    </div>
+    </footer>
   );
 };
-
-type LanguageButtonProps = {
-  label: string;
-  isActive: boolean;
-  onClick: () => void;
-};
-
-const LanguageButton = ({ label, isActive, onClick }: LanguageButtonProps) => (
-  <button
-    type="button"
-    className={`flex-1 rounded-2xl border px-3 py-2 text-sm font-medium transition ${
-      isActive
-        ? "border-primary bg-primary text-white shadow-card"
-        : "border-primary/20 bg-neutral-100 text-neutral-600 active:bg-primary/10 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-300"
-    }`}
-    onClick={onClick}
-  >
-    {label}
-  </button>
-);

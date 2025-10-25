@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getCopy, type Language } from "../lib/i18n";
+import { getCopy, type Language } from "../i18n/translations";
 
 interface Props {
   onCancel: () => void;

@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CountInputSheet } from "./components/CountInputSheet";
 import { DenominationGrid } from "./components/DenominationGrid";
-import { LinkCards } from "./components/LinkCards";
+import { LanguageSwitcher } from "./components/common/LanguageSwitcher";
 import { ResetBar } from "./components/ResetBar";
 import { ResetConfirmSheet } from "./components/ResetConfirmSheet";
 import { useAnimatedNumber } from "./hooks/useAnimatedNumber";
 import { formatCurrency } from "./lib/currency";
-import { getCopy, type Language } from "./lib/i18n";
+import { getCopy } from "./i18n/translations";
 import type { CashState, Denomination } from "./lib/types";
+import { useLanguage } from "./components/contexts/LanguagecContext";
 
 const DENOMINATIONS: Denomination[] = [
   500000,
@@ -23,7 +24,7 @@ const DENOMINATIONS: Denomination[] = [
 
 const STORAGE_KEY = "sweet-hut-cash-counter-state";
 const RESET_SKIP_KEY = "sweet-hut-cash-counter-reset-skip";
-const LANGUAGE_KEY = "sweet-hut-cash-counter-language";
+const HOME_LINK_URL = "https://sweet-hut-nav.vercel.app/";
 
 const loadCashState = (): CashState => {
   if (typeof window === "undefined") return {};
@@ -43,16 +44,10 @@ const loadResetSkip = (): boolean => {
   return window.localStorage.getItem(RESET_SKIP_KEY) === "true";
 };
 
-const loadLanguage = (): Language => {
-  if (typeof window === "undefined") return "vi";
-  const stored = window.localStorage.getItem(LANGUAGE_KEY);
-  return stored === "zh" ? "zh" : "vi";
-};
-
 export default function App() {
+  const { language } = useLanguage();
   const [cashState, setCashState] = useState<CashState>(() => loadCashState());
   const [skipResetConfirm, setSkipResetConfirm] = useState(() => loadResetSkip());
-  const [language, setLanguage] = useState<Language>(() => loadLanguage());
   const [activeDenom, setActiveDenom] = useState<Denomination | null>(null);
   const [recentDenom, setRecentDenom] = useState<Denomination | null>(null);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
@@ -68,11 +63,6 @@ export default function App() {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(RESET_SKIP_KEY, String(skipResetConfirm));
   }, [skipResetConfirm]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    window.localStorage.setItem(LANGUAGE_KEY, language);
-  }, [language]);
 
   const entries = useMemo(() => {
     return DENOMINATIONS.filter((denom) => (cashState[denom] ?? 0) > 0).map((denom) => ({
@@ -139,22 +129,24 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-neutral-950">
-      <div className="mx-auto flex min-h-screen w-full max-w-[420px] flex-col px-4 pb-16">
-        <header className="pt-[calc(1.2rem+env(safe-area-inset-top))] text-center">
-          <h1 className="text-2xl font-semibold tracking-tight text-primary-dark dark:text-primary-light">
+    <div className="min-h-screen bg-[#e9eef5] pb-6 transition-colors dark:bg-neutral-950">
+      <div className="mx-auto flex min-h-screen w-full max-w-[460px] flex-col px-5 pb-20">
+        <header className="pt-[calc(1.6rem+env(safe-area-inset-top))] text-center">
+          <h1 className="text-2xl font-semibold tracking-tight text-[#143f29] drop-shadow-sm dark:text-primary-light">
             {`SWEET HUT ${copy.titleSuffix}`}
           </h1>
-          <div className="mt-4 rounded-3xl bg-primary-dark p-6 shadow-card dark:bg-primary-dark">
-            <div className="text-sm text-white/70">{copy.totalLabel}</div>
-            <div className="mt-2 text-3xl font-bold text-white">
+          <div className="mt-6 rounded-[28px] border border-white/10 bg-gradient-to-br from-primary-dark to-primary px-8 py-7 text-white shadow-[0_26px_60px_-28px_rgba(18,92,52,0.55)] dark:bg-primary-dark">
+            <div className="text-sm font-medium uppercase tracking-[0.12em] text-white/75">
+              {copy.totalLabel}
+            </div>
+            <div className="mt-3 text-5xl font-semibold leading-tight drop-shadow-sm">
               {formatCurrency(displayTotal)}
             </div>
-            <div className="mt-2 flex items-center justify-center gap-4 text-xs">
-              <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 font-medium text-white">
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
+              <span className="flex items-center gap-1 rounded-full bg-white/15 px-4 py-1.5 text-white/90 shadow-inner">
                 {copy.notesCount(totalNotes)}
               </span>
-              <span className="flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 font-medium text-white">
+              <span className="flex items-center gap-1 rounded-full bg-white/15 px-4 py-1.5 text-white/90 shadow-inner">
                 {copy.denominationsCount(entries.length)}
               </span>
             </div>
@@ -170,15 +162,23 @@ export default function App() {
         />
 
         <div className="mt-8 flex flex-col gap-4">
-          <ResetBar
-            onReset={handleResetRequest}
-            isDisabled={entries.length === 0}
-            language={language}
-            onLanguageChange={setLanguage}
-          />
+          <ResetBar onReset={handleResetRequest} isDisabled={entries.length === 0} />
         </div>
 
-        <LinkCards language={language} />
+        <div className="mt-6 flex justify-center pb-2">
+          <LanguageSwitcher />
+        </div>
+
+        <div className="flex justify-center pb-6">
+          <a
+            href={HOME_LINK_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-gray-400 transition-colors hover:text-gray-600"
+          >
+            {copy.homeLinkLabel}
+          </a>
+        </div>
 
         {activeDenom && (
           <CountInputSheet

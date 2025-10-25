@@ -1,4 +1,6 @@
 import React from "react";
+import { getCopy } from "../i18n/translations";
+import { LanguageContext, type LanguageContextType } from "./contexts/LanguagecContext";
 
 type Props = {
   children: React.ReactNode;
@@ -10,6 +12,10 @@ type State = {
 };
 
 export class ErrorBoundary extends React.Component<Props, State> {
+  static contextType = LanguageContext;
+
+  declare context: LanguageContextType | undefined;
+
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
@@ -25,21 +31,20 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   render() {
+    const language = this.context?.language ?? "vi";
+    const copy = getCopy(language);
+    const errorCopy = copy.errors;
+
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen items-center justify-center bg-white p-4 dark:bg-neutral-950">
           <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-card dark:bg-neutral-900">
-            <h1 className="mb-4 text-2xl font-bold text-accent-dark">Đã xảy ra lỗi / 发生错误</h1>
-            <p className="mb-4 text-neutral-600 dark:text-neutral-300">
-              Xin lỗi, đã xảy ra lỗi. Vui lòng thử lại.
-            </p>
-            <p className="mb-6 text-neutral-600 dark:text-neutral-300">
-              抱歉，出现了错误。请重试。
-            </p>
+            <h1 className="mb-4 text-2xl font-bold text-accent-dark">{errorCopy.title}</h1>
+            <p className="mb-6 text-neutral-600 dark:text-neutral-300">{errorCopy.description}</p>
             {this.state.error && (
               <details className="mb-4 rounded-2xl bg-neutral-100 p-4 text-sm dark:bg-neutral-800">
                 <summary className="cursor-pointer font-semibold text-neutral-700 dark:text-neutral-200">
-                  Chi tiết lỗi / 错误详情
+                  {errorCopy.detailsLabel}
                 </summary>
                 <pre className="mt-2 overflow-x-auto text-xs text-neutral-600 dark:text-neutral-400">
                   {this.state.error.message}
@@ -55,7 +60,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 window.location.reload();
               }}
             >
-              Tải lại trang / 重新加载
+              {errorCopy.reloadCta}
             </button>
           </div>
         </div>
@@ -65,4 +70,3 @@ export class ErrorBoundary extends React.Component<Props, State> {
     return this.props.children;
   }
 }
-

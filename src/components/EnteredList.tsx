@@ -1,5 +1,5 @@
 import { formatCurrency } from "../lib/currency";
-import { getCopy, type Language } from "../lib/i18n";
+import { getCopy, type Language } from "../i18n/translations";
 import type { BillEntry } from "../lib/types";
 
 type Props = {
